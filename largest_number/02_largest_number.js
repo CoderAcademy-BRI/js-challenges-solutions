@@ -10,9 +10,9 @@ mocha 02_largest_number.js
 
 function largestNumber(arr) {
     let largest = arr[0]
-    for (let i in arr) {
-        if (arr[i] > largest) {
-            largest = arr[i]
+    for (let n of arr) {
+        if (n > largest) {
+            largest = n
         }
     }
     return largest
