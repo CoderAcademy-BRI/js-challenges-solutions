@@ -8,7 +8,7 @@ function sumScores(scores) {
     for (score of scores) {
         sum += score
     }
-    return score
+    return sum
 }
 
 function findWinner(players) {
@@ -19,6 +19,7 @@ function findWinner(players) {
     for (player of players) {
         let totalScore = sumScores(player.scores)
         if (totalScore > highestTotal) {
+            highestTotal = totalScore
             winner = player.name
         }
     }
@@ -38,15 +39,15 @@ class Player {
 let players = []
 describe('findWinner', function () {
     it('Should return the winner when winner is first in array', function () {
-        players = [new Player('James', [50, 100, 85], new Player('Nathan', [55, 90, 86]))]
+        players = [new Player('James', [50, 100, 85]), new Player('Nathan', [40, 90, 86])]
         assert.equal('James', findWinner(players))
     })
     it('Should return the winner when winner is second in array', function () {
-        players = [new Player('Nathan', [50, 100, 85], new Player('James', [55, 90, 86]))]
+        players = [new Player('James', [40, 90, 86]), new Player('Nathan', [50, 100, 85])]
         assert.equal('Nathan', findWinner(players))
     })
     it('Should return the first player when both players are tied', function () {
-        players = [new Player('Nathan', [50, 100, 85], new Player('James', [50, 100, 85]))]
+        players = [new Player('Nathan', [50, 100, 85]), new Player('James', [50, 100, 85])]
         assert.equal('Nathan', findWinner(players))
     })
 })
