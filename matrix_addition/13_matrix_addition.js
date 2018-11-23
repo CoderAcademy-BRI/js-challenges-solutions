@@ -33,23 +33,15 @@ function isValidForAdd(matrixOne, matrixTwo) {
     }
 }
 
-function singleDimensionAdd(matrixOne, matrixTwo) {
-    let result = []
-    for (let col = 0; col < matrixOne.length; col++) {
-        result.push(matrixOne[col] + matrixTwo[col])
-    }
-    return result
-
+function rowAdd(matrixOne, matrixTwo) {
+    return matrixOne.map((val, ind) => val + matrixTwo[ind])
 }
 
 function multiDimensionalAdd(matrixOne, matrixTwo) {
     let matrixResult = []
     // Otherwise do the multi-dimensional addition
     for (let row = 0; row < matrixOne.length; row++) {
-        let matrixRow = []
-        for (let col = 0; col < matrixOne[row].length; col++) {
-            matrixRow.push(matrixOne[row][col] + matrixTwo[row][col])
-        }
+        let matrixRow = rowAdd(matrixOne[row], matrixTwo[row])
         matrixResult.push(matrixRow)
     }
     return matrixResult;
@@ -63,7 +55,7 @@ function matrixAddition(matrixOne, matrixTwo) {
     }
     // Check for single dimension arrays
     if (matrixOne[0][0] == undefined) {
-        return singleDimensionAdd(matrixOne, matrixTwo)
+        return rowAdd(matrixOne, matrixTwo)
     } else {
         return multiDimensionalAdd(matrixOne, matrixTwo)
     }
