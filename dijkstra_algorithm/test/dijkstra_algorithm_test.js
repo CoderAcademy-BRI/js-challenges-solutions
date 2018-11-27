@@ -1,4 +1,4 @@
-var assert = require('assert');
+var assert = require('chai').assert;
 var dijkstra = require('../15_dijkstra_algorithm')
 
 const problem = {
@@ -24,27 +24,37 @@ const problem = {
   F: {}
 };
 
-describe('Find shortest path', () => {
-  it('Should return the total length of the shortest distance', () => {
-    assert.deepEqual({
-      distance: 11,
-      path: ['A', 'B', 'D', 'E', 'F']
-    }, dijkstra(problem, 'A', 'F'));
-    assert.deepEqual({
-      distance: 9,
-      path: ['B', 'D', 'E', 'F']
-    }, dijkstra(problem, 'B', 'F'));
-  });
-  it('Should return infinity if the distance cannot be completed', () => {
-    assert.deepEqual({
-      distance: Infinity,
-      path: []
-    }, dijkstra(problem, 'B', 'A'));
-  });
-  it('Should return the letter in the path if it stays at the same letter', () => {
-    assert.deepEqual({
-      distance: 0,
-      path: ['B']
-    }, dijkstra(problem, 'B', 'B'));
-  });
-});
+describe('Find shortest path', function () {
+  context('When there is a valid path and start is different from end', function () {
+    it('Should return the distance 11 from A to F with path A,B,D,E,F', function () {
+      assert.deepEqual({
+        distance: 11,
+        path: ['A', 'B', 'D', 'E', 'F']
+      }, dijkstra(problem, 'A', 'F'))
+    })
+    it('Should return the distance 9 from B to F with path B,D,E,F', function () {
+      assert.deepEqual({
+        distance: 9,
+        path: ['B', 'D', 'E', 'F']
+      }, dijkstra(problem, 'B', 'F'))
+    })
+
+  })
+
+  context('When there is no path between the start and end', function () {
+    it('Should return the distance Infinity if there is no path', function () {
+      assert.deepEqual({
+        distance: Infinity,
+        path: []
+      }, dijkstra(problem, 'B', 'A'));
+    })
+  })
+  context('When the start and end are the same', function () {
+    it('Should return a distance of 0 from B to B with path B', function () {
+      assert.deepEqual({
+        distance: 0,
+        path: ['B']
+      }, dijkstra(problem, 'B', 'B'));
+    })
+  })
+})
