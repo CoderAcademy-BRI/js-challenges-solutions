@@ -1,5 +1,5 @@
-var assert = require('chai').assert;
-var dijkstra = require('../15_dijkstra_algorithm')
+let assert = require('chai').assert;
+let dijkstra = require('../15_dijkstra_algorithm')
 
 const problem = {
   A: {
