@@ -17,17 +17,30 @@ Example:
 function binarySearch(binaryArray, searchValue) {
     // Your code here
     let times = 0
+    let origArray = binaryArray
     let midpoint = Math.floor(binaryArray.length / 2)
 
     while (true) {
+        // Count the times through the loop
         times++
+
         if (binaryArray[midpoint] == searchValue) {
-            return [midpoint, times]
+            // if item at midpoint is search value, we're done
+            return [origArray.indexOf(searchValue), times]
+        } else if (binaryArray.length == 1) {
+            // We only have one item left and it isn't the search value
+            // so the search value isn't in the list
+            return [-1, times]
         } else if (binaryArray[midpoint] > searchValue) {
-            midpoint = Math.floor(midpoint / 2)
+            // If the item at midpoint is greater than the search value
+            // we need to look to the left (remove the top half of binaryArray)
+            binaryArray = binaryArray.slice(0, midpoint)
         } else {
-            midpoint = Math.floor((binaryArray.length - midpoint) / 2) + midpoint
+            // If the item at midpoint is less than the search value
+            // we need to look to the right (remove the bottom half of binaryArray)
+            binaryArray = binaryArray.slice(midpoint + 1, binaryArray.length)
         }
+        midpoint = Math.floor(binaryArray.length / 2)
     }
 }
 
@@ -46,5 +59,8 @@ describe('Count loops', function () {
     })
     it('Should count length divided by two steps when value is at end', function () {
         assert.deepEqual([6, 3], binarySearch([1, 3, 7, 10, 14, 19, 31], 31))
+    })
+    it('Should return [-1,3] when search value is not in array', function () {
+        assert.deepEqual([-1, 3], binarySearch([1, 3, 7, 10, 14, 19, 31], 20))
     })
 })
