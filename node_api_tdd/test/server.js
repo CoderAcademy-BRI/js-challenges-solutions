@@ -13,33 +13,35 @@ describe('Books API', () => {
       chai.request(server)
         .get('/')
         .end((err, res) => {
-          res.should.have.status(200);
-          done();
-        });
-    });
-  });
+          res.should.have.status(200)
+          done()
+        })
+    })
+  })
 
   describe('GET /books', () => {
     it('should return an array of books', (done) => {
       chai.request(server)
         .get('/books')
         .end((err, res) => {
-          res.should.have.status(200);
-          res.body.should.be.a('array');
-          done();
-        });
-    });
+          res.should.have.status(200)
+          res.body.should.be.a('array')
+          done()
+        })
+    })
+
     it('should return an array of hashes with id, title', (done) => {
       chai.request(server)
         .get('/books')
         .end((err, res) => {
           let firstBook = res.body[0];
-          firstBook.should.be.a('object');
-          firstBook.should.have.own.property('id');
-          firstBook.should.have.own.property('title');
-          done();
-        });
-    });
+          firstBook.should.be.a('object')
+          firstBook.should.have.own.property('id')
+          firstBook.should.have.own.property('title')
+          done()
+        })
+    })
+
     it('should return publication year in book hashes', (done) => {
       chai.request(server)
         .get('/books')
@@ -50,6 +52,11 @@ describe('Books API', () => {
           done()
         })
     })
+
+  })
+
+
+  describe('Should be able to post', function () {
     it('should post a new book', (done) => {
       chai.request(server)
         .post('/books')
@@ -66,9 +73,7 @@ describe('Books API', () => {
           newBook["title"].should.have.string("Enders")
           done()
         })
-
-
     })
-  });
+  })
 
-});
+})
