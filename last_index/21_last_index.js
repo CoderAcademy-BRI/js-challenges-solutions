@@ -22,7 +22,8 @@ const findLastIndex = (array, needle) => {
   const key = Object.keys(needle)[0]
   const val = Object.values(needle)[0]
   for (let i = array.length - 1; i >= 0; i--) {
-    if (Object.keys(array[i]).includes(key) && Object.values(array[i]).includes(val))
+    if (Object.keys(array[i]).includes(key) &&
+      Object.values(array[i]).includes(val))
       return i
   }
   return -1
@@ -68,6 +69,17 @@ describe('Find Last Index', () => {
         one: 1
       }), 0)
     })
+  })
+
+  it('should return -1 if item not found', function () {
+    const objects = [{
+      one: 1,
+      two: 2,
+      three: 3
+    }]
+    assert.equal(findLastIndex(objects, {
+      four: 4
+    }), -1)
   })
 
 })
