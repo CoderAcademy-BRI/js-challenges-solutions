@@ -9,26 +9,30 @@ mocha 02_largest_number.js
 */
 
 function largestNumber(arr) {
-    let largest = arr[0]
-    for (let n of arr) {
-        if (n > largest) {
-            largest = n
-        }
-    }
-    return largest
+	let largest = arr[0]
+	for (let n of arr) {
+		if (n > largest) {
+			largest = n
+		}
+	}
+	return largest
 }
 
-var assert = require('assert');
+console.log("Here is the output")
+console.log(largestNumber([1, 2, 3]))
 
-describe('largestNumber', function () {
-    it('should return the largest number', function () {
-        assert.equal(10, largestNumber([5, -2, 10]));
-    })
-    it('should ignore invalid array entries', function () {
-        assert.equal(10, largestNumber([10, 10, 's']));
-    })
-    it('should return null if the array is empty', function () {
-        assert.equal(null, largestNumber([]))
-    })
+module.exports = { largestNumber }
+// var assert = require('assert');
 
-})
+// describe('largestNumber', function () {
+//     it('should return the largest number', function () {
+//         assert.equal(10, largestNumber([5, -2, 10]));
+//     })
+//     it('should ignore invalid array entries', function () {
+//         assert.equal(10, largestNumber([10, 10, 's']));
+//     })
+//     it('should return null if the array is empty', function () {
+//         assert.equal(null, largestNumber([]))
+//     })
+
+// })
