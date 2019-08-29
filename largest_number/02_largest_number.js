@@ -4,12 +4,12 @@ Write a method that will take an array of numbers
 and return whichever is the largest.
 
 Test your solution:
-mocha 02_largest_number.js
-(You'll need mocha installed first: `npm install mocha -g`)
+jest
+(You'll need jest installed first: `npm install jest`)
 */
 
 function largestNumber(arr) {
-	let largest = arr[0]
+	let largest = arr[0] || null
 	for (let n of arr) {
 		if (n > largest) {
 			largest = n
@@ -18,21 +18,6 @@ function largestNumber(arr) {
 	return largest
 }
 
-console.log("Here is the output")
-console.log(largestNumber([1, 2, 3]))
-
-module.exports = { largestNumber }
-// var assert = require('assert');
-
-// describe('largestNumber', function () {
-//     it('should return the largest number', function () {
-//         assert.equal(10, largestNumber([5, -2, 10]));
-//     })
-//     it('should ignore invalid array entries', function () {
-//         assert.equal(10, largestNumber([10, 10, 's']));
-//     })
-//     it('should return null if the array is empty', function () {
-//         assert.equal(null, largestNumber([]))
-//     })
-
-// })
+module.exports = {
+	largestNumber
+}
