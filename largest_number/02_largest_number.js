@@ -4,7 +4,7 @@ Write a method that will take an array of numbers
 and return whichever is the largest.
 
 Test your solution:
-jest
+npm test
 (You'll need jest installed first: `npm install jest`)
 */
 
