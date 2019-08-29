@@ -1,4 +1,3 @@
-const assert = require("assert")
 const largestNumber = require("./02_largest_number").largestNumber
 
 describe("largestNumber", function () {
