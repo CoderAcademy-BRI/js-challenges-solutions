@@ -26,17 +26,6 @@ function persistence(num) {
     return steps
 }
 
-
-var assert = require('assert');
-
-describe('Initial Tests', function () {
-    it('Should return 3 steps for 39', function () {
-        assert.equal(persistence(39), 3);
-        assert.equal(persistence(25), 2);
-        assert.equal(persistence(999), 4);
-    })
-    it('Should return zero if num is a one digit number', function () {
-        assert.equal(persistence(4), 0);
-        assert.equal(persistence(9), 0);
-    })
-});
+module.exports = {
+    persistence
+}
