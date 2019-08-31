@@ -51,40 +51,6 @@ function queueTime(customers, n) {
     return queues.reduce((a, b) => a > b ? a : b)
 }
 
-const assert = require('assert');
-
-describe('queueTime', function () {
-    context('Should return the correct queue time', function () {
-        it('Should return 10 with [1,2,3,4] and 1 till', function () {
-            assert.equal(queueTime([1, 2, 3, 4], 1), 10)
-        })
-        it('Should return 9 with [2,2,3,3,4,4] and 2 tills', function () {
-            assert.equal(queueTime([2, 2, 3, 3, 4, 4], 2), 9)
-        })
-        it('Should return 12 with [1,2,3,4,5,6] and 2 tills', function () {
-            assert.equal(queueTime([1, 2, 3, 4, 5, 6], 2), 12)
-        })
-        it('Should return 5 with [2,1,4,2,3,1] and 3 tills', function () {
-            assert.equal(queueTime([2, 1, 4, 2, 3, 1], 3), 5)
-        })
-
-    })
-    context('Should return 0 if there are no customers', function () {
-        it('Should return 0 if there are no customers and 1 till', function () {
-            assert.equal(queueTime([], 1), 0)
-        })
-        it('Should return 0 if there are no customers and 5 tills', function () {
-            assert.equal(queueTime([], 5), 0)
-        })
-
-    })
-    context('Should return the correct queue time if tills is greater than customers', function () {
-        it('Should return the largest value - 5 - with [1,2,3,4,5] and 100 tills', function () {
-            assert.equal(queueTime([1, 2, 3, 4, 5], 100), 5)
-        })
-        it('Should return the largest value - 5 - with [1,2,3,4,5] and 6 tills', function () {
-            assert.equal(queueTime([1, 2, 3, 4, 5], 6), 5)
-        })
-
-    })
-})
+module.exports = {
+    queueTime
+}
