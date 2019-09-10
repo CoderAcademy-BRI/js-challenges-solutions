@@ -13,4 +13,11 @@ describe('Count loops', function () {
     test('Should count length divided by two steps when value is at end', function () {
         expect(binarySearch([1, 3, 7, 10, 14, 19, 31], 31)).toEqual([6, 3]);
     })
+    test('Should return -1,0 when the array is empty', function () {
+        expect(binarySearch([], 3)).toEqual([-1, 0])
+
+    })
+    test('Should count length divided by two steps when value is not found and return postition -1', function () {
+        expect(binarySearch([1, 3, 7, 10, 14, 19, 31], 6)).toEqual([-1, 3]);
+    })
 })

@@ -18,8 +18,8 @@ function binarySearch(binaryArray, searchValue) {
     // Your code here
     let times = 0
     let midpoint = Math.floor(binaryArray.length / 2)
-
-    while (true) {
+    let worstCaseTime = Math.floor(Math.log2(binaryArray.length));
+    while (times <= worstCaseTime) {
         times++
         if (binaryArray[midpoint] == searchValue) {
             return [midpoint, times]
@@ -29,6 +29,9 @@ function binarySearch(binaryArray, searchValue) {
             midpoint = Math.floor((binaryArray.length - midpoint) / 2) + midpoint
         }
     }
+    return [-1, times];
+
+
 }
 
 module.exports = {
