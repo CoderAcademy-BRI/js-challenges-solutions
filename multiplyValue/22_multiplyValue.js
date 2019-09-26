@@ -23,7 +23,7 @@ exports.multiplyValue = (value, times) => {
 
     if (Object.is(result, NaN)) {
         result = null;
-        if (typeof value === "string") {
+        if (typeof value === "string" && typeof times === "number") {
             result = "";
             for (let i = 1; i <= times; i++) {
                 result += value;
